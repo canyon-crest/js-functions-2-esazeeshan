@@ -1,110 +1,67 @@
-// ============================================
-//  Unit 8.6 – Functions
-// ============================================
-//  Complete each function below by following
-//  the STEP comments. Do NOT rename the functions.
-//
-//  Each function is called by a pre-written click
-//  handler at the bottom of this file. You only need
-//  to write the functions themselves.
-// ============================================
+// Global variable for the persistent counter (Must be declared ABOVE myFunc)
+let count = 0;
 
-
-// --- WARM-UP: greet(name) ---
-// This function takes a name and returns a greeting string.
-//
-// STEP 1: The function receives one parameter called "name".
-// STEP 2: Return the string "Hello, " + name + "!"
-//         Example: greet("Alice") should return "Hello, Alice!"
-
+/**
+ * Warm-Up: greet(name) — 15 points
+ * Takes a name string and returns a personalized greeting.
+ */
 function greet(name) {
-  // Write your code here
-
+    return "Hello, " + name + "!";
 }
 
-
-// --- myFunc() — Persistent Counter ---
-// This function counts how many times it has been called.
-// It uses a global variable to remember the count between calls.
-//
-// STEP 1: ABOVE this function, declare a global variable:
-//         let count = 0;
-//
-// STEP 2: Inside the function, add 1 to count.
-//
-// STEP 3: Return the new count value.
-//         First click → returns 1, second → returns 2, etc.
-
-
-
+/**
+ * myFunc() — Persistent Counter — 15 points
+ * Increments and returns the global count variable each time it is called.
+ */
 function myFunc() {
-  // Write your code here
-
+    count = count + 1;
+    return count;
 }
 
-
-// --- getRandomNum(max) ---
-// This function returns a random integer between 1 and max.
-// If max is not valid (not a number, zero, or negative), return 0.
-//
-// STEP 1: Check if max is not a number, or if max is less than 1.
-//         If so, return 0.
-//
-// STEP 2: Generate a random integer from 1 to max using:
-//         Math.floor(Math.random() * max) + 1
-//
-// STEP 3: Return the random number.
-
+/**
+ * getRandomNum(max) — 10 points
+ * Returns a random integer from 1 to max (inclusive).
+ * Returns 0 if max is invalid, zero, or negative.
+ */
 function getRandomNum(max) {
-  // Write your code here
-
+    if (isNaN(max) || max <= 0) {
+        return 0;
+    }
+    return Math.floor(Math.random() * max) + 1;
 }
 
-
-// --- myAdder(x, y) ---
-// This function adds two numbers and returns the result.
-//
-// STEP 1: Return x + y.
-//         Make sure both x and y are numbers, not strings!
-//         The click handler already converts them for you.
-
+/**
+ * myAdder(x, y) — 10 points
+ * Adds two numbers together. Coerces values to Numbers to prevent string concatenation.
+ */
 function myAdder(x, y) {
-  // Write your code here
-
+    return Number(x) + Number(y);
 }
 
-
-// --- distance(x1, y1, x2, y2) ---
-// This function calculates the Euclidean distance between
-// two points (x1, y1) and (x2, y2).
-//
-// Formula: sqrt((x2 - x1)² + (y2 - y1)²)
-//
-// STEP 1: Calculate (x2 - x1) and square it.
-// STEP 2: Calculate (y2 - y1) and square it.
-// STEP 3: Add them together.
-// STEP 4: Return Math.sqrt() of the sum, rounded to 2 decimal
-//         places using .toFixed(2).
-
+/**
+ * distance(x1, y1, x2, y2) — 20 points
+ * Calculates Euclidean distance between two points, rounded to 2 decimal places.
+ */
 function distance(x1, y1, x2, y2) {
-  // Write your code here
-
+    let xDist = Number(x2) - Number(x1);
+    let yDist = Number(y2) - Number(y1);
+    let result = Math.sqrt(Math.pow(xDist, 2) + Math.pow(yDist, 2));
+    return result.toFixed(2);
 }
 
-
-// --- tipCalc(bill, tipPercent) ---
-// This function calculates a tip and returns the total.
-//
-// STEP 1: Calculate the tip amount: bill * (tipPercent / 100)
-// STEP 2: Calculate the total: bill + tip
-// STEP 3: Return the total rounded to 2 decimal places
-//         using .toFixed(2).
-//         Example: tipCalc(50, 20) → tip is 10, total is "60.00"
-
+/**
+ * tipCalc(bill, tipPercent) — 15 points
+ * Calculates the total restaurant bill including tip, rounded to 2 decimal places.
+ */
 function tipCalc(bill, tipPercent) {
-  // Write your code here
-
+    let parsedBill = Number(bill);
+    let parsedTipPercent = Number(tipPercent);
+    
+    let tip = parsedBill * (parsedTipPercent / 100);
+    let total = parsedBill + tip;
+    return total.toFixed(2);
 }
+
 
 
 // ============================================
